@@ -3,6 +3,7 @@ package com.usedcar.controller;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.usedcar.common.dto.CarMakeDto;
 import com.usedcar.common.dto.CarModelDto;
+import com.usedcar.common.dto.CarModelMakeDto;
 import com.usedcar.common.lang.Result;
 import com.usedcar.service.CarMakeService;
 import com.usedcar.service.CarModelService;
@@ -42,10 +43,14 @@ public class CarModelController extends BaseController {
 
         Page<CarModelDto> pageCarModelDto = carModelService.getList(getPage(), name);
         List<CarMakeDto> allMake = carMakeService.getAllMake();
-        Map<String, Object> map = new HashMap();
-        map.put("carModelPage", pageCarModelDto);
-        map.put("carMakeList", allMake);
-        return Result.succ(map);
+//        Map<String, Object> map = new HashMap();
+//        map.put("carModelPage", pageCarModelDto);
+//        map.put("carMakeList", allMake);
+
+        CarModelMakeDto dto = new CarModelMakeDto();
+        dto.setPageCarModelDto(pageCarModelDto);
+        dto.setAllMake(allMake);
+        return Result.succ(dto);
     }
 
     @PostMapping("/save")

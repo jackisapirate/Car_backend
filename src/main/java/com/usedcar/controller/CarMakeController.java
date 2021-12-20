@@ -40,8 +40,6 @@ public class CarMakeController extends BaseController {
 
         QueryWrapper<CarMake> queryWrapper=new QueryWrapper<CarMake>();
         queryWrapper.like("name",name);
-//        Integer count = carMakeMapper.selectCount(queryWrapper);
-//        System.out.println(count + "----> 统计数字");
 
         Result result = carMakeService.getList(getPage(), name);
         return result;

@@ -22,7 +22,7 @@ public class CarInformation extends BaseEntity {
 
     private String year;
 
-    private Integer price;
+    private String price;
 
     private String mileage;
 

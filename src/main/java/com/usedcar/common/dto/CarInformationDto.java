@@ -12,7 +12,7 @@ public class CarInformationDto {
 
     private String year;
 
-    private Integer price;
+    private String price;
 
     private String mileage;
 
@@ -56,8 +56,12 @@ public class CarInformationDto {
         return year;
     }
 
-    public Integer getPrice() {
+    public String getPrice() {
         return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
     }
 
     public String getMileage() {
@@ -90,10 +94,6 @@ public class CarInformationDto {
 
     public void setYear(String year) {
         this.year = year;
-    }
-
-    public void setPrice(Integer price) {
-        this.price = price;
     }
 
     public void setMileage(String mileage) {
