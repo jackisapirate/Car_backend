@@ -1,0 +1,24 @@
+server:
+  port: 8081
+# DataSource Config
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/usedcardb?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=UTC
+    username: root
+    password: root
+#  security:
+#    user:
+#      name: user
+#      password: root
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**Mapper.xml
+car:
+  jwt:
+    header: Authorization
+    expire: 2592000
+    secret: aeofrlk3l4j5l2kjgj57h#%gcytv432b
+springfox:
+  documentation:
+    swagger-ui:
+      enabled: true
