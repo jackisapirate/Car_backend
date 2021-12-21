@@ -20,4 +20,6 @@ public interface CarInformationService extends IService<CarInformation> {
     public Result updateById(CarInformationDto carInformationDto);
 
     public Result removeById(Long id);
+
+    public Result showDetail(Long id);
 }

@@ -105,8 +105,8 @@ public class CarModelServiceImpl extends ServiceImpl<CarModelMapper, CarModel> i
             carMakeService.updateModelCount(carMakeId, false);
 
         } else {
-            // same name of car make
-            result = Result.fail("There is also Model under this Car Make. Please delete the Model under this Car Make first.");
+            // same name of car model
+            result = Result.fail("There is also car under this Car Model. Please delete the Car under this Model first.");
         }
         return result;
     }

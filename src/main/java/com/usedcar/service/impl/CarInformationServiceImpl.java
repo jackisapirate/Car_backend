@@ -3,9 +3,12 @@ package com.usedcar.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.usedcar.common.dto.CarDetailDto;
 import com.usedcar.common.dto.CarInformationDto;
 import com.usedcar.common.lang.Result;
 import com.usedcar.entity.CarInformation;
+import com.usedcar.entity.CarMake;
+import com.usedcar.entity.CarModel;
 import com.usedcar.mapper.CarInformationMapper;
 import com.usedcar.service.CarInformationService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -141,4 +144,25 @@ public class CarInformationServiceImpl extends ServiceImpl<CarInformationMapper,
         return listMaps;
     }
 
+
+    public Result showDetail(Long id){
+        CarInformation carInformation = super.getById(id);
+        if(carInformation!=null){
+            Long carModelId = carInformation.getCarModelId();
+            Result resultModel = carModelService.getById(carModelId);
+            if(resultModel.getData() != null){
+                CarModel carModel = (CarModel) resultModel.getData();
+                Result resultMake = carMakeService.getById(carModel.getCarMakeId());
+                if(resultMake.getData()!=null){
+                    CarMake carMake = (CarMake) resultMake.getData();
+                    CarDetailDto carDetailDto = new CarDetailDto();
+                    carDetailDto.setCarInformation(carInformation);
+                    carDetailDto.setCarModel(carModel);
+                    carDetailDto.setCarMake(carMake);
+                    return Result.succ(carDetailDto);
+                }
+            }
+        }
+        return Result.fail("Sorry, we did not find the detail information of the car!");
+    }
 }

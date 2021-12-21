@@ -81,4 +81,11 @@ public class CarInformationController extends BaseController {
         Result result = carInformationService.removeById(id);
         return result;
     }
+
+    @PostMapping("/showDetail/{id}")
+    @PreAuthorize("hasAuthority('car:information:list')")
+    public Result showDetail(@PathVariable("id")Long id){
+        Result result = carInformationService.showDetail(id);
+        return result;
+    }
 }
